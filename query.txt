@@ -1,0 +1,22 @@
+--Lista o nome e o e-mail de todos os clientes cadastrados:
+
+SELECT tipo_produto, data_compra, pagamento FROM compra;
+
+--Busca todas as compras realizadas acima de 100 reais:
+
+SELECT id_compra, valor FROM compra WHERE valor> 100.00;
+
+--Lista os clientes em ordem alfabética pelo sobrenome:
+
+SELECT * FROM cliente ORDER BY sobrenome ASC;
+
+--Mostra quais tipos de produto tiveram mais de 10 vendas registradas:
+
+SELECT tipo_produto, COUNT(id_compra) AS total_vendas FROM compra GROUP BY tipo_produto HAVING COUNT(id_compra) > 10;
+
+--Cruza as tabelas para mostrar o nome do cliente e a data da compra:
+
+SELECT c.nome, co.data_compra, co.tipo_produto FROM cliente c JOIN compra co ON c.id_cliente = co.id_cliente;
+
+--Concatena o nome e sobrenome dos clientes:
+SELECT concat(nome,' ',sobrenome) as nome_completo FROM cliente; 
